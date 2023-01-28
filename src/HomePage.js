@@ -28,6 +28,8 @@ onAuthStateChanged(newAuth, (user) => {
 function HomePage() {
   const [currHabits, setCurrHabits] = useState(["Test Habit", "Another Habit"]);
 
+  const [habitsComplete, setHabitsComplete] = useState(0)
+
   const fetchPost = async () => {
     //  console.log(auth.currentUser.uid)
     // let data = db.collection('books').doc('fK3ddutEpD2qQqRMXNW5').get()

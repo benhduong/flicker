@@ -6,7 +6,7 @@
 }
 
 .addHabit {
-  width: fit-content
+  width: fit-content;
 }
 
 /* CSS */
@@ -80,7 +80,9 @@
   fill: white;
   width: 12%;
   margin-bottom: 3px;
-  padding-left: 8px
+  margin-left: 9px;
+  padding-left: 8px;
+  margin-right: -12px;
 }
 
 .plusIcon:hover {
