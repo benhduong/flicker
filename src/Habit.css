@@ -1,6 +1,8 @@
 
 .habit {
-  width: 10%
+  margin: 2%;
+  border: solid 1px;
+  border-radius: 5px;
 }
 
 .addHabit {

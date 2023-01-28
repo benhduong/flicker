@@ -12,7 +12,9 @@ function AddHabit(props) {
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
-      setCurrHabits([...currHabits, inputText])
+      if (inputText !== "") {
+        setCurrHabits([...currHabits, inputText])
+      }
     }
   };
 
@@ -23,7 +25,9 @@ function AddHabit(props) {
           setInputText(e.target.value)
         }} onKeyDown={handleKeyDown}></input>
         <img className="plusIcon" src={"/plus.svg"} onClick={() => {
-          setCurrHabits([...currHabits, inputText])
+          if (inputText !== "") {
+            setCurrHabits([...currHabits, inputText])
+          }
         }}></img>
       </div>
     </div>

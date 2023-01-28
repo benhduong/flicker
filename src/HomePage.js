@@ -47,11 +47,13 @@ function HomePage() {
   return (
     <div className="homepage">
 
-      <h1>Name Of Wesbite</h1>
+      <h1>Flicker</h1>
 
-      <div className="habits">
+      <div className="homepagePane">
         <AddHabit text={"Add New Habit"} currHabits={currHabits} setCurrHabits={setCurrHabits}/>
-        {currHabits.map((habitText, i) => <Habit text={habitText} key={i}/>)}
+        <div className="habits">
+          {currHabits.map((habitText, i) => <Habit text={habitText} key={i}/>)}
+        </div>
       </div>
       <div className="fix">CampFire Div
       
