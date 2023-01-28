@@ -88,7 +88,7 @@ function HomePage() {
         />
         <div className="habits">
           {currHabits.map((habitText, i) => (
-            <Habit text={habitText} key={i} />
+            <Habit text={habitText} currHabits={currHabits} setCurrHabits={setCurrHabits} key={i} />
           ))}
         </div>
       </div>
