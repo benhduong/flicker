@@ -4,3 +4,8 @@
   bottom:0px;
   left:50%;
 }
+
+.habits {
+  display: flex;
+  justify-content: center;
+}
