@@ -11,15 +11,12 @@ function App() {
     <BrowserRouter>
           <Routes>
             <Route path="/" element={<LoginPage />}>
-              <Route path="homepage" element={<HomePage />} />
+              <Route path="/homepage" element={<HomePage />} />
             </Route>
           </Routes>
         </BrowserRouter>
     </div>
   );
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
 
 export default App;

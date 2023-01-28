@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { signInWithGoogle } from "./Firebase.js";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function Login() {
@@ -10,6 +16,8 @@ function Login() {
         <button  onClick={signInWithGoogle}>
           Login with Google
         </button>
+
+          <Link to="/homepage"><button>Test</button></Link>
       </div>
     </div>
   );
