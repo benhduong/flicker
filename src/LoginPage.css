@@ -1,5 +1,5 @@
 .login {
-    background-color: #946E44;
+    background-color: #664B38;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +17,8 @@
 .title {
     color: #FFA725;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-bottom: 20px;
+    font-size: xx-large;
 }
 
 .login-with-google-btn {
