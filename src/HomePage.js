@@ -1,9 +1,22 @@
 import logo from './logo.svg';
 import './HomePage.css';
 
-import { getAuth, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
 import AddHabit from './AddHabit';
 import Habit from './Habit'
+
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    // ...
+  } else {
+    // User is signed out
+    // ...
+  }
+});
 
 // const auth = getAuth();
 // getRedirectResult(auth)
