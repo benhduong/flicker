@@ -75,6 +75,20 @@
 }  
 
 .plusIcon {
-  width: 3%;
-  color: white;
+  fill: white;
+  width: 12%;
+  margin-bottom: -10px;
+  padding-left: 8px
+}
+
+.plusIcon:hover {
+  animation: 900ms infinite alternate tilt-shaking;
+}
+ 
+@keyframes tilt-shaking {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }

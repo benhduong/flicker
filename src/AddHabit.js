@@ -7,7 +7,7 @@ function AddHabit(props) {
 
   return (
     <div className="addHabit">
-      <div className="button-27">
+      <div className="button-27 addHabitLine">
         <input type="text" placeholder='New Habit' className='habitInput'></input>
         <img className="plusIcon" src={"/plus.svg"}></img>
       </div>
