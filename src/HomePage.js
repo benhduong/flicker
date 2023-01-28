@@ -1,12 +1,12 @@
 import logo from "./logo.svg";
 import "./HomePage.css";
 import React, { useState } from "react";
-import Nav from "./Nav.js";
+import Nav from "./components/Nav.js";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AddHabit from "./AddHabit";
 import Habit from "./Habit";
-import Fire from "./Fire.js";
+import Fire from "./components/Fire.js";
 
 const auth = getAuth();
 let uid = "";
@@ -27,7 +27,7 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      <Nav id={uid}/>
+      <Nav id={uid} />
 
       <h1>Flicker</h1>
 
@@ -43,7 +43,7 @@ function HomePage() {
           ))}
         </div>
       </div>
-      <div className="fix">
+      <div className="campfire">
         <Fire />
       </div>
     </div>
