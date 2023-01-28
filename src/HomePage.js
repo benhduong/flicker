@@ -1,17 +1,19 @@
 import logo from './logo.svg';
 import './HomePage.css';
 import React, { useState } from 'react';
+import Nav from './Nav.js';
 
 import { getAuth, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
 import AddHabit from './AddHabit';
 import Habit from './Habit'
 
 const auth = getAuth();
+let uid = '';
 onAuthStateChanged(auth, (user) => {
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
-    const uid = user.uid;
+    uid = user.displayName;
     // ...
   } else {
     // User is signed out
@@ -46,6 +48,7 @@ function HomePage() {
 
   return (
     <div className="homepage">
+      <Nav id={uid}/>
 
       <h1>Flicker</h1>
 
