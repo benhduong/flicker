@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { signInWithGoogle } from "./Firebase.js";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import './LoginPage.css';
 
 function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <button onClick={signInWithGoogle}>
+        <div className="title">Welcome to Campfire!</div>
+        <button className="login-with-google-btn" onClick={signInWithGoogle}>
           Login with Google
         </button>
-
-        <Link to="/homepage"><button>Test</button></Link>
       </div>
+      <Link to="/homepage">
+        <button>Homepage</button>
+      </Link>
     </div>
   );
 }
