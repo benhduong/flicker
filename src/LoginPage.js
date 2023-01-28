@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { signInWithGoogle } from "./Firebase.js";
+import './LoginPage.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,12 +13,11 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
-
-        <button  onClick={signInWithGoogle}>
+        <button onClick={signInWithGoogle}>
           Login with Google
         </button>
 
-          <Link to="/homepage"><button>Test</button></Link>
+        <Link to="/homepage"><button>Test</button></Link>
       </div>
     </div>
   );

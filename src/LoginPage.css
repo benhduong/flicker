@@ -1,0 +1,11 @@
+.login {
+    background-color: #946E44;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.login__container {
+    
+}
