@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./HomePage.css";
-import React, { useState } from "react";
-import Nav from "./Nav.js";
+import React, { useState, useEffect} from "react";
+import Nav from "./components/Nav.js";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import AddHabit from "./AddHabit";
