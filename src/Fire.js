@@ -2,17 +2,17 @@ import './Fire.css';
 
 function Fire() {
     return (
-        <div class="content">
-            <div class="light"></div>
-            <div class="fire">
-                <div class="back"></div>
-                <div class="medium"></div>
-                <div class="front"></div>
+        <div className="content">
+            <div className="light"></div>
+            <div className="fire">
+                <div className="back"></div>
+                <div className="medium"></div>
+                <div className="front"></div>
             </div>
-            <div class="wood">
-                <div class="stick"></div>
-                <div class="stick"></div>
-                <div class="stick"></div>
+            <div className="wood">
+                <div className="stick"></div>
+                <div className="stick"></div>
+                <div className="stick"></div>
             </div>
         </div>
     );
