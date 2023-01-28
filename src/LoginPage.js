@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { signInWithGoogle } from "./Firebase.js";
 import { Link } from "react-router-dom";
 import './LoginPage.css';
+import Fire from './Fire.js';
 
 function Login() {
   return (
@@ -16,8 +17,8 @@ function Login() {
         <button>Homepage</button>
       </Link>
 
-      <div className="campfire div">CampFire Div
-      
+      <div className="campfire">
+        <Fire />
       </div>
     </div>
   );

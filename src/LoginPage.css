@@ -27,6 +27,10 @@
     font-size: xx-large;
 }
 
+.campfire {
+    padding-top: 50vh;
+}
+
 .login-with-google-btn {
   transition: background-color .3s, box-shadow .3s;
     
