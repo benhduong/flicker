@@ -7,7 +7,7 @@ function Habit(props) {
 
   return (
     <div className="habit">
-      {text}
+      <button onClick={}>{text}</button>
     </div>
   );
 }
