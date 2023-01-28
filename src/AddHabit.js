@@ -5,12 +5,11 @@ import { collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
 import { db, auth} from "./Firebase.js"
 
 function AddHabit(props) {
+  let text = props.text;
+  let setCurrHabits = props.setCurrHabits;
+  let currHabits = props.currHabits;
 
-  let text = props.text
-  let setCurrHabits = props.setCurrHabits
-  let currHabits = props.currHabits
-
-  const [inputText, setInputText] = useState("")
+  const [inputText, setInputText] = useState("");
 
   const addTodo = async (newHabit) => {
 
@@ -32,7 +31,7 @@ function AddHabit(props) {
   }
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       if (inputText !== "") {
         setCurrHabits([...currHabits, inputText])
         addTodo(inputText)
