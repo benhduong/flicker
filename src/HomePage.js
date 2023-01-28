@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './HomePage.css';
+import React, { useState } from 'react';
 
 import { getAuth, onAuthStateChanged, GoogleAuthProvider } from "firebase/auth";
 import AddHabit from './AddHabit';
@@ -41,7 +42,7 @@ onAuthStateChanged(auth, (user) => {
 
 function HomePage() {
 
-  let currHabits = ["Test Habit", "Another Habit"]
+  const [currHabits, setCurrHabits] = useState(["Test Habit", "Another Habit"])
 
   return (
     <div className="homepage">
@@ -49,7 +50,7 @@ function HomePage() {
       <h1>Name Of Wesbite</h1>
 
       <div className="habits">
-        <AddHabit text={"Add New Habit"}/>
+        <AddHabit text={"Add New Habit"} currHabits={currHabits} setCurrHabits={setCurrHabits}/>
         {currHabits.map((habitText, i) => <Habit text={habitText} key={i}/>)}
       </div>
       <div className="fix">CampFire Div
