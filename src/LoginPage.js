@@ -7,7 +7,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <div className="title">Welcome to Campfire!</div>
+        <div className="title">Welcome to Flicker!</div>
         <button className="login-with-google-btn" onClick={signInWithGoogle}>
           Login with Google
         </button>
