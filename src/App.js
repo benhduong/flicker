@@ -1,22 +1,31 @@
 import ReactDOM from "react-dom/client";
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 import LoginPage from "./LoginPage";
 import HomePage from "./HomePage";
 
 function App() {
   return (
-    <div className="App">
-
-    <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginPage />}>
-              <Route path="/homepage" element={<HomePage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+  <div className="App">
+        <Routes>
+            <Route path="/" element={<LoginPage/>}/>
+            <Route path="/homepage" element={<HomePage/>}/>
+        </Routes>
     </div>
   );
 }
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+};
+
+export default AppWrapper;
