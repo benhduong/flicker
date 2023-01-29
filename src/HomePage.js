@@ -31,7 +31,7 @@ onAuthStateChanged(newAuth, (user) => {
 function HomePage() {
   const [currHabits, setCurrHabits] = useState([]);
 
-  const [habitLevel, setHabitLevel] = useState(0);
+  const [habitLevel, setHabitLevel] = useState(undefined);
   const [timeSinceLastLevelDrop, setTimeSinceLastLevelDrop] = useState(
     Date.now()
   );
@@ -49,7 +49,11 @@ function HomePage() {
         newData[0].habitLevel !== undefined &&
         newData[0].timeSinceLastLevelDrop !== undefined
       ) {
-        setHabitLevel(newData[0].habitLevel);
+        if (newData[0].habitLevel == NaN) {
+          setHabitLevel(0);
+        } else {
+          setHabitLevel(newData[0].habitLevel);
+        }
         setTimeSinceLastLevelDrop(newData[0].timeSinceLastLevelDrop);
       }
     });
@@ -132,6 +136,7 @@ function HomePage() {
   }, []);
 
   let fireToDisplay = <Fire />;
+  console.log("Changing fire", habitLevel)
   if (habitLevel > 6) {
     //big fire
     fireToDisplay = <Fire />;
@@ -155,7 +160,7 @@ function HomePage() {
         Keep your fire strong by completing a habit in {Math.round(6 - timeDif)}{" "}
         hours
       </p>
-      <p>Click a habit to add it to the fire!</p>
+      <p>Click a completed habit to add it to the fire!</p>
 
       <div className="homepagePane">
         <AddHabit
