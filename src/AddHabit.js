@@ -1,6 +1,6 @@
 import './Habit.css';
-import React, { useState, useEffect, useRef} from 'react';
-import { collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
+import React, { useState, useRef} from 'react';
+import { setDoc, doc} from "firebase/firestore";
 import { db, auth} from "./Firebase.js"
 
 function AddHabit(props) {

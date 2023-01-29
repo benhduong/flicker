@@ -50,7 +50,7 @@ function HomePage() {
         newData[0].habitLevel !== undefined &&
         newData[0].timeSinceLastLevelDrop !== undefined
       ) {
-        if (newData[0].habitLevel == NaN) {
+        if (isNaN(newData[0].habitLevel)) {
           setHabitLevel(0);
         } else {
           setHabitLevel(newData[0].habitLevel);
@@ -138,7 +138,7 @@ function HomePage() {
   
       setUpdatedOnce(true)
     }
-  }, [editLevels, habitLevel, timeSinceLastLevelDrop]);
+  }, [editLevels, habitLevel, timeSinceLastLevelDrop, updatedOnce]);
 
   let fireToDisplay = <Fire />;
   console.log("Changing fire", habitLevel)
