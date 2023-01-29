@@ -26,7 +26,7 @@ onAuthStateChanged(newAuth, (user) => {
 });
 
 function HomePage() {
-  const [currHabits, setCurrHabits] = useState(["Test Habit", "Another Habit"]);
+  const [currHabits, setCurrHabits] = useState([]);
 
   const [habitLevel, setHabitLevel] = useState(0)
   const [timeSinceLastLevelDrop, setTimeSinceLastLevelDrop] = useState(Date.now())
@@ -46,7 +46,8 @@ function HomePage() {
     });
   }
   
-    const editLevels = async (newHabit) => {
+    async function editLevels() {
+      console.log("Trying to edit levels")
       try {
         console.log(auth.currentUser.uid);
           const docRef = await setDoc(doc(db, "levels", auth.currentUser.uid), {
@@ -107,7 +108,8 @@ function HomePage() {
       let currTime = Date.now()
       let pastTime = timeSinceLastLevelDrop
       let timeDif = currTime - pastTime
-      timeDif = timeDif * (1/1000) * (1/60) * (1/60)
+      timeDif = timeDif * (1/1000) * (1/60) * (1/4)
+      // * (1/60)
       setTimeDif(timeDif)
       if (timeDif / 6 > 1) {
         console.log(timeDif)
@@ -119,12 +121,24 @@ function HomePage() {
     })
   }, []);
 
+  let fireToDisplay = <Fire />
+  if (habitLevel > 6) {
+    //big fire
+  } else if (habitLevel > 2) {
+    //medium fire
+  } else if (habitLevel > 0) {
+    //small fire
+  } else {
+    //dead fire
+  }
+
   return (
     <div className="homepage">
       <Nav id={uid} />
 
       <h1>Flicker</h1>
-      <p>Keep your fire strong by completing a habit in X hours</p>
+      <p>Keep your fire strong by completing a habit in {Math.round(6 - timeDif)} hours</p>
+      <p>Click a habit to add it to the fire!</p>
 
       <div className="homepagePane">
         <AddHabit
@@ -134,12 +148,19 @@ function HomePage() {
         />
         <div className="habits">
           {currHabits.map((habitText, i) => (
-            <Habit text={habitText} currHabits={currHabits} setCurrHabits={setCurrHabits} editLevels={editLevels} key={i} />
+            <Habit 
+            text={habitText} 
+            currHabits={currHabits} 
+            setCurrHabits={setCurrHabits} 
+            editLevels={editLevels} 
+            habitLevel={habitLevel}
+            setHabitLevel={setHabitLevel}
+            key={i} />
           ))}
         </div>
       </div>
       <div className="campfire">
-        <Fire />
+        {fireToDisplay}
       </div>
     </div>
   );
