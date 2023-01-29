@@ -66,7 +66,7 @@ function HomePage() {
     } catch (e) {
       //console.error("Error adding document: ", e);
     }
-  }, [])  
+  }, [habitLevel, timeSinceLastLevelDrop])  
 
   const fetchPost = async () => {
     //  console.log(auth.currentUser.uid)
@@ -128,7 +128,7 @@ function HomePage() {
       }
       editLevels();
     });
-  }, [habitLevel, timeSinceLastLevelDrop]);
+  }, [editLevels, habitLevel, timeSinceLastLevelDrop]);
 
   let fireToDisplay = <Fire />;
   if (habitLevel > 6) {
