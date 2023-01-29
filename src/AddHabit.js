@@ -19,7 +19,7 @@ function AddHabit(props) {
    
     try {
       console.log(auth.currentUser.uid);
-        const docRef = await setDoc(doc(db, "habits", auth.currentUser.uid), {
+        await setDoc(doc(db, "habits", auth.currentUser.uid), {
           habits: [...currHabits,newHabit],    
         });
         //console.log("Document written with ID: ", docRef.id);

@@ -1,5 +1,5 @@
 import "./HomePage.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Nav from "./components/Nav.js";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -54,7 +54,7 @@ function HomePage() {
     });
   };
 
-  async function editLevels() {
+  const editLevels = useCallback(async () => {
     console.log("Trying to edit levels");
     try {
       console.log(auth.currentUser.uid);
@@ -66,7 +66,7 @@ function HomePage() {
     } catch (e) {
       //console.error("Error adding document: ", e);
     }
-  }
+  }, [])  
 
   const fetchPost = async () => {
     //  console.log(auth.currentUser.uid)
@@ -128,7 +128,7 @@ function HomePage() {
       }
       editLevels();
     });
-  }, [editLevels, habitLevel, timeSinceLastLevelDrop]);
+  }, [habitLevel, timeSinceLastLevelDrop]);
 
   let fireToDisplay = <Fire />;
   if (habitLevel > 6) {
