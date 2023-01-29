@@ -108,7 +108,8 @@ function HomePage() {
       let currTime = Date.now()
       let pastTime = timeSinceLastLevelDrop
       let timeDif = currTime - pastTime
-      timeDif = timeDif * (1/1000) * (1/60) * (1/4)
+      timeDif = timeDif * (1/1000) * (1/60) * (1/60)
+      console.log("timeDif", timeDif)
       // * (1/60)
       setTimeDif(timeDif)
       if (timeDif / 6 > 1) {
