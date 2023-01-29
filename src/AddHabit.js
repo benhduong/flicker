@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import './Habit.css';
-import React, { useState, useEffect} from 'react';
-import { collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
+import React, { useState } from 'react';
+import { setDoc, doc} from "firebase/firestore";
 import { db, auth} from "./Firebase.js"
 
 function AddHabit(props) {
-  let text = props.text;
   let setCurrHabits = props.setCurrHabits;
   let currHabits = props.currHabits;
 
@@ -46,7 +44,7 @@ function AddHabit(props) {
         <input type="text" placeholder='New Habit' className='habitInput' onChange={(e) => {
           setInputText(e.target.value)
         }} onKeyDown={handleKeyDown}></input>
-        <img className="plusIcon" src={"/plus.svg"} onClick={() => {
+        <img className="plusIcon" alt="plus button" src={"/plus.svg"} onClick={() => {
           if (inputText !== "") {
             setCurrHabits([...currHabits, inputText])
             addTodo(inputText)

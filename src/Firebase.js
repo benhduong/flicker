@@ -5,10 +5,6 @@ import {
   GoogleAuthProvider,
   getAuth,
   signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signOut,
 } from "firebase/auth";
 
 import {
@@ -20,7 +16,6 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-import { useNavigate } from "react-router-dom";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -59,7 +54,6 @@ const signInWithGoogle = async () => {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const googleProvider = new GoogleAuthProvider();
 
 const auth = getAuth(app);
