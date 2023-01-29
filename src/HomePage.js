@@ -124,6 +124,7 @@ function HomePage() {
       <Nav id={uid} />
 
       <h1>Flicker</h1>
+      <p>Keep your fire strong by completing a habit in X hours</p>
 
       <div className="homepagePane">
         <AddHabit

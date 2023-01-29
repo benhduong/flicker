@@ -11,6 +11,7 @@ function Login() {
     <div className="login">
       <div className="login__container">
         <div className="title">Welcome to Flicker!</div>
+        <div className="p">Keep your fire alive by completing habits daily</div>
         <button
           className="login-with-google-btn"
           onClick={() =>
