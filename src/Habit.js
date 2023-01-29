@@ -8,14 +8,9 @@ function Habit(props) {
   let text = props.text
   let currHabits = props.currHabits
   let setCurrHabits = props.setCurrHabits
+  let editLevels = props.editLevels
 
   const removeTodo = async (oldHabit) => {
-
-    // await setDoc(doc(db, "cities", "LA"), {
-    //   name: "Los Angeles",
-    //   state: "CA",
-    //   country: "USA"
-    // });
    
     try {
       console.log(auth.currentUser.uid);
@@ -25,6 +20,8 @@ function Habit(props) {
         });
         setCurrHabits(removedCopy)
         console.log("Removed the habit ", oldHabit)
+
+        await editLevels();
         //console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         //console.error("Error adding document: ", e);
