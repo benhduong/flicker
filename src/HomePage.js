@@ -36,6 +36,8 @@ function HomePage() {
   );
   const [timeDif, setTimeDif] = useState(6);
 
+  const [updatedOnce, setUpdatedOnce] = useState(false);
+
   const fetchLevel = async () => {
     await getDocs(collection(db, "levels")).then((querySnapshot) => {
       let newData = querySnapshot.docs;
@@ -115,23 +117,27 @@ function HomePage() {
   };
 
   useEffect(() => {
-    fetchPost();
-    fetchLevel().then(() => {
-      let currTime = Date.now();
-      let pastTime = timeSinceLastLevelDrop;
-      let timeDif = currTime - pastTime;
-      timeDif = timeDif * (1 / 1000) * (1 / 60) * (1 / 60);
-      console.log("timeDif", timeDif);
-      // * (1/60)
-      setTimeDif(timeDif);
-      if (timeDif / 6 > 1) {
-        console.log(timeDif);
-        let newFireLevel = Math.max(0, habitLevel - Math.floor(timeDif / 6));
-        setHabitLevel(newFireLevel);
-        setTimeSinceLastLevelDrop(Date.now());
-      }
-      editLevels();
-    });
+    if (!updatedOnce) {
+      fetchPost();
+      fetchLevel().then(() => {
+        let currTime = Date.now();
+        let pastTime = timeSinceLastLevelDrop;
+        let timeDif = currTime - pastTime;
+        timeDif = timeDif * (1 / 1000) * (1 / 60) * (1 / 60);
+        console.log("timeDif", timeDif);
+        // * (1/60)
+        setTimeDif(timeDif);
+        if (timeDif / 6 > 1) {
+          console.log(timeDif);
+          let newFireLevel = Math.max(0, habitLevel - Math.floor(timeDif / 6));
+          setHabitLevel(newFireLevel);
+          setTimeSinceLastLevelDrop(Date.now());
+        }
+        editLevels();
+      });
+  
+      setUpdatedOnce(true)
+    }
   }, [editLevels, habitLevel, timeSinceLastLevelDrop]);
 
   let fireToDisplay = <Fire />;
