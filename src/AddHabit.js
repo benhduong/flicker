@@ -1,11 +1,14 @@
-import logo from './logo.svg';
 import './Habit.css';
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef} from 'react';
 import { collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
+=======
+import React, { useState } from 'react';
+import { setDoc, doc} from "firebase/firestore";
+>>>>>>> 42a56a215123fb42e369a46d5558e36d7fb49fb9
 import { db, auth} from "./Firebase.js"
 
 function AddHabit(props) {
-  let text = props.text;
   let setCurrHabits = props.setCurrHabits;
   let currHabits = props.currHabits;
 
@@ -23,7 +26,7 @@ function AddHabit(props) {
    
     try {
       console.log(auth.currentUser.uid);
-        const docRef = await setDoc(doc(db, "habits", auth.currentUser.uid), {
+        await setDoc(doc(db, "habits", auth.currentUser.uid), {
           habits: [...currHabits,newHabit],    
         });
         //console.log("Document written with ID: ", docRef.id);
@@ -50,7 +53,7 @@ function AddHabit(props) {
         <input type="text" ref={inputRef} placeholder='New Habit' className='habitInput' onChange={(e) => {
           setInputText(e.target.value)
         }} onKeyDown={handleKeyDown}></input>
-        <img className="plusIcon" src={"/plus.svg"} onClick={() => {
+        <img className="plusIcon" alt="plus button" src={"/plus.svg"} onClick={() => {
           if (inputText !== "") {
             setCurrHabits([...currHabits, inputText])
             addTodo(inputText)

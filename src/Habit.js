@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './Habit.css';
-import { collection, addDoc, getDocs, setDoc, doc} from "firebase/firestore";
+import { setDoc, doc} from "firebase/firestore";
 import { db, auth} from "./Firebase.js"
 
 function Habit(props) {
@@ -17,7 +16,7 @@ function Habit(props) {
     try {
       console.log(auth.currentUser.uid);
       let removedCopy = currHabits.filter((h) => h !== oldHabit)
-        const docRef = await setDoc(doc(db, "habits", auth.currentUser.uid), {
+        await setDoc(doc(db, "habits", auth.currentUser.uid), {
           habits: removedCopy,    
         });
         setCurrHabits(removedCopy)

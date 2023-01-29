@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { signInWithGoogle } from "./Firebase.js";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./LoginPage.css";
 import Fire from "./components/Fire.js";
 

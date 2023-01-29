@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./HomePage.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Nav from "./components/Nav.js";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -11,7 +10,7 @@ import DeadFire from "./components/DeadFire.js";
 import SmallFire from "./components/SmallFire.js";
 import MediumFire from "./components/MediumFire.js";
 
-import { collection, addDoc, getDocs, setDoc, doc } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 import { db, auth } from "./Firebase.js";
 
 const newAuth = getAuth();
@@ -59,11 +58,11 @@ function HomePage() {
     });
   };
 
-  async function editLevels() {
+  const editLevels = useCallback(async () => {
     console.log("Trying to edit levels");
     try {
       console.log(auth.currentUser.uid);
-      const docRef = await setDoc(doc(db, "levels", auth.currentUser.uid), {
+      await setDoc(doc(db, "levels", auth.currentUser.uid), {
         habitLevel: habitLevel,
         timeSinceLastLevelDrop: timeSinceLastLevelDrop,
       });
@@ -71,7 +70,7 @@ function HomePage() {
     } catch (e) {
       //console.error("Error adding document: ", e);
     }
-  }
+  }, [habitLevel, timeSinceLastLevelDrop])  
 
   const fetchPost = async () => {
     //  console.log(auth.currentUser.uid)
@@ -118,11 +117,11 @@ function HomePage() {
   useEffect(() => {
     fetchPost();
     fetchLevel().then(() => {
-      let currTime = Date.now()
-      let pastTime = timeSinceLastLevelDrop
-      let timeDif = currTime - pastTime
-      timeDif = timeDif * (1/1000) * (1/60) * (1/60)
-      console.log("timeDif", timeDif)
+      let currTime = Date.now();
+      let pastTime = timeSinceLastLevelDrop;
+      let timeDif = currTime - pastTime;
+      timeDif = timeDif * (1 / 1000) * (1 / 60) * (1 / 60);
+      console.log("timeDif", timeDif);
       // * (1/60)
       setTimeDif(timeDif);
       if (timeDif / 6 > 1) {
@@ -133,7 +132,7 @@ function HomePage() {
       }
       editLevels();
     });
-  }, []);
+  }, [editLevels, habitLevel, timeSinceLastLevelDrop]);
 
   let fireToDisplay = <Fire />;
   console.log("Changing fire", habitLevel)
