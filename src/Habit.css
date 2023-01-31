@@ -12,6 +12,7 @@
 
 .habitButton {
   cursor: pointer;
+  z-index: 9999;
 }
 
 /* CSS */
