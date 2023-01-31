@@ -9,6 +9,10 @@
   width: fit-content;
 }
 
+.habitButton {
+  cursor: pointer;
+}
+
 /* CSS */
 .button-27 {
   appearance: none;

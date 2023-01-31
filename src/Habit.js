@@ -32,7 +32,7 @@ function Habit(props) {
 
   return (
     <div className="habit">
-      <button onClick={() => removeTodo(text)}>{text}</button>
+      <button className="habitButton" onClick={() => removeTodo(text)}>{text}</button>
     </div>
   );
 }
